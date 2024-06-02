@@ -98,31 +98,101 @@ function isRightTriangle(a,b,c){
 //     document.getElementById("text").innerHTML = some;
 //   }
 
-const fakePromise = (url) => {
-    return new Promise((resolve,reject) => {
-        const delay = Math.floor(Math.random() * (4500)) + 500;
+// const fakePromise = (url) => {
+//     return new Promise((resolve,reject) => {
+//         const delay = Math.floor(Math.random() * (4500)) + 500;
+//         setTimeout(() => {
+//             if(delay > 4000) {
+//                 reject('connection timeout')
+//             } else {
+//                 resolve(`Here is your fake data from ${url}`  )
+//             }
+//         },delay)
+//     })
+// }
+
+// fakePromise('yelp.com/api/coffee/page1')
+//     .then( ()=> {
+//         console.log('promise resolved');
+//         fakePromise('yelp.com/api/coffee/page2')
+//             .then( ()=> {
+//                 console.log('promise resolved page2');  
+//             })
+//             .catch( ()=> {
+//             console.log('promise rejected paghe2')
+//             }) 
+
+// })
+// .catch( ()=> {
+//     console.log('promise rejected');
+// })
+
+// fakePromise('yelp.com/api/coffee/page1')
+// .then((data) => {
+//     console.log('it worked');
+//     console.log(data);
+//     return fakePromise('yelp.com/api/coffee/page1');
+// })
+// fakePromise('yelp.com/api/coffee/page2')
+// .then((data) => {
+//     console.log('it worked');
+//     console.log(data);
+//     return fakePromise('yelp.com/api/coffee/page2');
+// })
+// fakePromise('yelp.com/api/coffee/page3')
+// .then((data) => {
+//     console.log('it worked');
+//     console.log(data);
+//     return fakePromise('yelp.com/api/coffee/page3');
+// })
+// .catch((err) => {
+//     console.log(err);
+//     console.log('Failed request');
+// })
+
+// creating promises
+// new Promise((resolve, reject) => {
+//     resolve();
+// })
+
+// const fakeRequest = (url) => {
+//     return new Promise((resolve, reject) => {
+//        const rand = Math.random();
+//        setTimeout(() =>{
+//         if(rand < 0.7){
+//             resolve('yor fake data here');
+//         } else{
+//             reject('request error');
+//         }
+//        },1000) 
+//     })
+// }
+
+// fakeRequest('/dogs/1');
+//     .then((data) => {
+//         console.log('it worked');
+//         console.log(data);
+//         return fakeRequest('/dogs/1');
+//     })
+//     .catch((err) => {
+//         console.log('Nope', err);
+//     })
+
+
+function colorchange(color,delay) {
+    return new Promise((resolve, reject) => {
         setTimeout(() => {
-            if(delay > 4000) {
-                reject('connection timeout')
-            } else {
-                resolve(`Here is your fake data from ${url}`  )
-            }
-        },delay)
+            document.body.style.backgroundColor = color;
+            resolve();
+        }, delay)
     })
 }
 
-fakePromise('yelp.com/api/coffee/page1')
-    .then( ()=> {
-        console.log('promise resolved');
-        fakePromise('yelp.com/api/coffee/page2')
-            .then( ()=> {
-                console.log('promise resolved page2');  
-            })
-            .catch( ()=> {
-            console.log('promise rejected paghe2')
-            }) 
-
-})
-.catch( ()=> {
-    console.log('promise rejected');
-})
+colorchange('red',1000)
+ .then(() => colorchange('orange',1000))
+ .then(() => colorchange('yellow',1000))
+ .then(() => colorchange('blue',1000))
+ .then(() => colorchange('green',1000))
+ .then(() => colorchange('yellow',1000))
+ .then(() => colorchange('indigo',1000))
+ .then(() => colorchange('violet',1000))
