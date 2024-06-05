@@ -196,3 +196,38 @@ colorchange('red',1000)
  .then(() => colorchange('yellow',1000))
  .then(() => colorchange('indigo',1000))
  .then(() => colorchange('violet',1000))
+
+
+ async function sing(){
+    throw new Error('oops');
+    return 'bla bla bla';
+ }
+
+ sing()
+ .then((data) => {
+    console.log('promise resolved with'+ data);
+ })
+
+ sing()
+ .then(data => {
+    console.log('promise resolved')
+    console.log(data)
+ })
+ .catch(err => {
+    console.log('promise rejected');
+    console.log(err)
+ })
+
+ const login = async(username, password) => {
+    if(!username || !password) throw 'missing credentials';
+    if(password === 'meeeee') return 'welcome'
+ }
+
+ login('ssskkk', 'meeeee')
+    .then(msg => {
+        console.log('logged in')
+        console.log(msg)
+    })
+    .catch(err => {
+        console.log(err, 'ERRor')
+    })
